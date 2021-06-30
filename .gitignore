@@ -7,3 +7,9 @@ jspm_packages
 
 # IDE
 .vscode
+vscode
+.DS_Store
+
+# Test reports
+coverage
+test.png

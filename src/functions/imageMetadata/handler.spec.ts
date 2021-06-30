@@ -11,7 +11,7 @@ const mockEvent = {
           "name": "myBucket"
         },
         "object": {
-          "key": "linux.png",
+          "key": "test.png",
         }
       }
     }
@@ -38,7 +38,7 @@ const mockReadMetadataPromise = () => {
 
 test('Validating File Read Metadata', async () => {
 
-  //Mocking file path
+  //Mocking file path for writing the image file
   constants.constants.filePath = '.';
 
   //Mocking the implementation of the AWS S3 method getObject()
@@ -49,6 +49,8 @@ test('Validating File Read Metadata', async () => {
         }
     };
   });
+
+  //Mocking the implementation of AWS S3 method upload
   mockS3upload.mockImplementation(() => {
     return {
         promise() {
@@ -57,6 +59,7 @@ test('Validating File Read Metadata', async () => {
     };
   });
 
+  //Mocking the readMetadataPromise method responsible for reading the image metadata
   const addMock = jest.spyOn(imageMetadata, 'readMetadataPromise');
   addMock.mockImplementation(mockReadMetadataPromise);
 

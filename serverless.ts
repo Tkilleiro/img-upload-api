@@ -76,7 +76,7 @@ const serverlessConfiguration: AWS = {
   },
 
   // import the function via paths
-  functions: { getUrl, imageMetadata},
+  functions: { getUrl, imageMetadata },
 };
 
 module.exports = serverlessConfiguration;

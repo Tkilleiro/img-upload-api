@@ -14,14 +14,14 @@ export const readMetadataPromise = (path: string) => {
   })
 }
 
+/**
+ * This method will be triggered by the put object action from a defined S3 Bucket 
+ * and download the image, extract the image metadata and save on the bucket 
+ * it in a json file.  
+ * 
+ * @param event - Lambda event variable containing the request information 
+ */
 export const imageMetadata = async (event) => {
-  /**
-   * This method will be triggered by the put object action from a defined S3 Bucket 
-   * and download the image, extract the image metadata and save on the bucket 
-   * it in a json file.  
-   * 
-   * @param event
-   */
 
   const s3 = new S3({
     region: 'us-east-1'
@@ -46,7 +46,7 @@ export const imageMetadata = async (event) => {
     //Reading metadata with ImageMagick
     metadata = Buffer.from(JSON.stringify(await readMetadataPromise(filePath)));
 
-    // Uploading files to the bucket
+    //Uploading files to the bucket
     const fileMetadata = "metadata/file_metadata.json";
     const saveFile: S3.PutObjectRequest = {
       Bucket: bucket,

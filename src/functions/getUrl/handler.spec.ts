@@ -16,6 +16,7 @@ const mockEvent: any = {
   "body": {"name": "image.png"}
 }
 
+
 test('Test Presigned URL', async () => {
   const payload = JSON.stringify(await getUrl(mockEvent, null, () => {}));
   console.log(payload);
